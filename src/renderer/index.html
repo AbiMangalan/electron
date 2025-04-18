@@ -11,18 +11,38 @@
       http-equiv="X-Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
     />
-    <title>Hello from Electron renderer!</title>
+    <title>My Electron App</title>
     <link rel="stylesheet" href="./styles/main.css">
   </head>
   <body>
-    <h1>Hello from Electron renderer!</h1>
-    <p>👋</p>
-    <hr>
-    <p>Current theme source: <strong id="theme-source">System</strong></p>
-    <button id="toggle-dark-mode">Toggle Dark Mode</button>
-    <button id="reset-to-system">Reset to System Theme</button>
-    <hr>
-    <p id="info"></p>
+    <div class="vs-container">
+      <h1>Hello from Electron!</h1>
+      <p>👋 Welcome to the VS Code-themed Electron app</p>
+      
+      <div class="about-panel">
+        <h2>About This App</h2>
+        <p id="info"></p>
+      </div>
+      
+      <div class="theme-panel">
+        <p>Current theme source: <strong id="theme-source">System</strong></p>
+        <div>
+          <button id="toggle-dark-mode">Toggle Dark Mode</button>
+          <button id="reset-to-system">Reset to System Theme</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+      <div class="status-left">
+        <div class="status-item">📦 Electron App</div>
+      </div>
+      <div class="status-right">
+        <div class="status-item">Theme:&nbsp;<span id="status-theme">System</span></div>
+      </div>
+    </div>
+
     <script src="./renderer.js"></script>
   </body>
 </html>

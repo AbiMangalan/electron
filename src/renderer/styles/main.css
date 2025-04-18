@@ -1,17 +1,190 @@
 :root {
+  /* Light theme colors (GitHub theme) */
+  --bg-color-light: #fff;
+  --editor-bg-light: #ffffff;
+  --text-color-light: #24292e;
+  --border-color-light: #e1e4e8;
+  --highlight-color-light: #0366d6;
+  --status-bar-bg-light: #24292e;
+  --status-bar-text-light: #fff;
+  --panel-bg-light: #f6f8fa;
+  --button-bg-light: #fafbfc;
+  --button-border-light: rgba(27, 31, 35, 0.15);
+  --button-text-light: #24292e;
+
+  /* Dark theme colors (GitHub Dark theme) */
+  --bg-color-dark: #0d1117;
+  --editor-bg-dark: #0d1117;
+  --text-color-dark: #c9d1d9;
+  --border-color-dark: #30363d;
+  --highlight-color-dark: #58a6ff;
+  --status-bar-bg-dark: #161b22;
+  --status-bar-text-dark: #c9d1d9;
+  --panel-bg-dark: #161b22;
+  --button-bg-dark: #21262d;
+  --button-border-dark: rgba(240, 246, 252, 0.1);
+  --button-text-dark: #c9d1d9;
+
+  /* Default to light theme */
+  --bg-color: var(--bg-color-light);
+  --editor-bg: var(--editor-bg-light); 
+  --text-color: var(--text-color-light);
+  --border-color: var(--border-color-light);
+  --highlight-color: var(--highlight-color-light);
+  --status-bar-bg: var(--status-bar-bg-light);
+  --status-bar-text: var(--status-bar-text-light);
+  --panel-bg: var(--panel-bg-light);
+  --button-bg: var(--button-bg-light);
+  --button-border: var(--button-border-light);
+  --button-text: var(--button-text-light);
+
   color-scheme: light dark;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
 }
 
+/* Apply dark theme when preferred */
 @media (prefers-color-scheme: dark) {
-  body {
-    background: #333;
-    color: white;
+  :root {
+    --bg-color: var(--bg-color-dark);
+    --editor-bg: var(--editor-bg-dark);
+    --text-color: var(--text-color-dark);
+    --border-color: var(--border-color-dark);
+    --highlight-color: var(--highlight-color-dark);
+    --status-bar-bg: var(--status-bar-bg-dark);
+    --status-bar-text: var(--status-bar-text-dark);
+    --panel-bg: var(--panel-bg-dark);
+    --button-bg: var(--button-bg-dark);
+    --button-border: var(--button-border-dark);
+    --button-text: var(--button-text-dark);
   }
 }
 
-@media (prefers-color-scheme: light) {
-  body {
-    background: #ddd;
-    color: black;
-  }
+/* Force dark theme */
+body.dark-theme {
+  --bg-color: var(--bg-color-dark);
+  --editor-bg: var(--editor-bg-dark);
+  --text-color: var(--text-color-dark);
+  --border-color: var(--border-color-dark);
+  --highlight-color: var(--highlight-color-dark);
+  --status-bar-bg: var(--status-bar-bg-dark);
+  --status-bar-text: var(--status-bar-text-dark);
+  --panel-bg: var(--panel-bg-dark);
+  --button-bg: var(--button-bg-dark);
+  --button-border: var(--button-border-dark);
+  --button-text: var(--button-text-dark);
+}
+
+/* Force light theme */
+body.light-theme {
+  --bg-color: var(--bg-color-light);
+  --editor-bg: var(--editor-bg-light);
+  --text-color: var(--text-color-light);
+  --border-color: var(--border-color-light);
+  --highlight-color: var(--highlight-color-light);
+  --status-bar-bg: var(--status-bar-bg-light);
+  --status-bar-text: var(--status-bar-text-light);
+  --panel-bg: var(--panel-bg-light);
+  --button-bg: var(--button-bg-light);
+  --button-border: var(--button-border-light);
+  --button-text: var(--button-text-light);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 14px;
+  line-height: 1.5;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.vs-container {
+  flex: 1;
+  padding: 20px;
+  background-color: var(--editor-bg);
+  overflow-y: auto;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 16px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 20px 0;
+}
+
+/* Status Bar */
+.status-bar {
+  height: 22px;
+  background-color: var(--status-bar-bg);
+  color: var(--status-bar-text);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  font-size: 12px;
+  align-items: center;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+}
+
+/* Buttons */
+button {
+  background-color: var(--button-bg);
+  border: 1px solid var(--button-border);
+  color: var(--button-text);
+  padding: 5px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+button:hover {
+  background-color: var(--highlight-color);
+  color: white;
+}
+
+/* About panel */
+.about-panel {
+  padding: 15px;
+  background-color: var(--panel-bg);
+  border-radius: 6px;
+  margin: 20px 0;
+  border: 1px solid var(--border-color);
+}
+
+.about-panel h2 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Theme settings panel */
+.theme-panel {
+  margin-top: 16px;
+}
+
+strong {
+  font-weight: 600;
 }
